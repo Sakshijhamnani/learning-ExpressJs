@@ -5,17 +5,13 @@ const rootDir=require('../util/path')
 const path=require('path')
 
 const router=express.Router();
+const productController=require('../controllers/product')
 
 // /admin/add-product
-router.get('/add-product',(req,res,next)=>{
-    res.sendFile(path.join(rootDir,'views','add-product.html'))
-   });
+router.get('/add-product',productController.getAddProducts);
 
    
 // /admin/add-product
-router.post('/add-product',(req,res,next)=>{
-     console.log(req.body)
-     res.redirect('/') 
-  })
+router.post('/add-product',productController.postAddProducts)
 
 module.exports=router;
